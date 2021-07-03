@@ -8,10 +8,19 @@ Welcome to Bridgetown!
 
 <p id="root"></p>
 
-<%=
-  CableReady::CableCar.instance
+<template id="run-confetti">
+<%== cable_car
     .console_log(message: "Super duper!")
-    .append("#root", html: "<strong>And a hearty hello to CableCar!</strong>")
-    .dispatch(elements: true)
-    .html_safe
-%>
+    .confetti(particles: 175)
+    .dispatch(elements: true) %>
+
+<!--
+.append("#root", html: "<strong>And a hearty hello to CableCar!</strong>")
+-->
+</template>
+
+<button onclick='
+  document.body.append(document.querySelector("#run-confetti").content.cloneNode(true))
+'>
+  Confetti?!
+</button>
